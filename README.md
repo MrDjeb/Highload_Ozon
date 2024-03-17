@@ -1,13 +1,27 @@
 # Highload Ozon
 
-## Содержание
-* ### [1. Тема, целевая аудитория](#1)
-* ### [2. Расчет нагрузки](#2)
-* ### [3. Глобальная балансировка](#3)
+---
 
-## 1. Тема, аудитория, функционал <a name="1"></a>
+## Содержание
+
+* ### [1. Тема, целевая аудитория](#1)
+
+* ### [2. Расчет нагрузки](#2)
+
+* ### [3. Глобальная балансировка нагрузки](#3)
+  
+* ### [4. Локальная балансировка нагрузки](#4)
+  
+* ### [5. Логическая схема бд](#5)
+  
+* * ### [Источники](#sources)
+  
+---
+
+## 1. Тема, аудитория, функционал
 
 ### Тема
+
 Ozon — выход крупнейшего E-commerce России на рынок КНР.  
 ### Целевая аудитория  \[[1]( https://ozon.tech/)]
 - Рынок КНР.
@@ -60,7 +74,132 @@ Ozon — выход крупнейшего E-commerce России на рыно
 
 ---
 
-## 3. Глобальная балансировка <a name="3"></a>
+## 3. Глобальная балансировка нагрузки <a name="3"></a>
 
 Плотность населения КНР
 ![alt text](images/image.png)
+
+---
+
+## 4. Локальная балансировка нагрузки <a name="4"></a>
+
+Возможные решения:
+* *Weight round robin*
+* *Consistent Hash*
+* *Least Connected*
+* *PeakEWMA*
+#### Выберем *_PeakEWMA_*
+Рассчитываем скользящее среднее
+времени длительности запросов и,
+исходя из этого, выбираем бэкенд, на
+который вышлем нагрузку.
+Данный алгоритм использует концепцию экспоненциально взвешенных скользящих средних для определения «пиковой» нагрузки серверов.
+Присваивая веса недавним измерениям трафика, он точно фиксирует текущую нагрузку сервера и динамически корректирует свой выбор для входящих запросов.
+
+Эксперимент с тремя алгоритмами: round robin, least loaded, and peak exponentially-weighted moving average (“peak EWMA”)
+![alt text](images/image-2.png)
+
+*PeakEWMA* показал наибольшее лучшии метрики при тестах в Ozon.
+![alt text](images/image-3.png)
+
+---
+
+## 5. Логическая схема БД <a name="5"></a>
+
+```mermaid
+erDiagram
+  PROFILE ||--o{ ORDER : includes
+  PROFILE ||--o{ ADDRESS : includes
+  PROFILE ||--o{ CART : includes
+
+  PROMOCODE ||--o{ ORDER : includes
+  ORDER ||--o{ ORDER_ITEM : includes
+
+  PRODUCT ||--o{ ORDER_ITEM: includes
+  PRODUCT ||--o{ SHOPPING_CART_ITEM : includes
+  CATEGORY ||--|{ PRODUCT : includes
+  STATUS ||--|{ ORDER : includes
+  CART ||--o{ SHOPPING_CART_ITEM : includes
+
+  PROFILE {
+    uuid id PK
+    text login UK
+    text description
+    text imgsrc
+    text passwordhash
+  }
+
+  PRODUCT {
+    uuid id PK
+    text name UK
+    text description
+    int price
+    text imgsrc
+    number rating
+    uuid category FK
+  }
+
+
+  ORDER {
+    uuid id PK
+    uuid profile_id FK
+    uuid promocode_id FK
+    int status FK
+    timestampz creation_at
+    timestampz delivery_at
+  }
+
+  STATUS {
+    serial id PK
+    text name UK
+  }
+
+  ORDER_ITEM {
+    uuid id PK
+    uuid order_id FK
+    uuid product_id FK
+    int quantity
+    int price
+  }
+
+  ADDRESS {
+    uuid id PK
+    uuid profile_id FK
+    text city
+    text street
+    text house
+    text flat
+    bool is_current
+  }
+
+  CATEGORY {
+    serial id PK
+    text name UK
+    int parent FK
+  }
+
+  CART {
+    uuid id PK
+    uuid profile_id FK
+    bool is_current
+  }
+  
+  SHOPPING_CART_ITEM {
+    uuid id PK
+    uuid cart_id FK
+    uuid product_id FK
+    int quantity
+  }
+
+
+```
+
+---
+
+## Источники <a name="sources"></a>
+* https://ozon.tech/
+* https://habr.com/ru/companies/ozontech/articles/667600/
+* https://www.youtube.com/watch?v=kIZ_4PNvkro
+* https://habr.com/ru/companies/ozontech/articles/749328/
+* https://linkerd.io/2016/03/16/beyond-round-robin-load-balancing-for-latency/
+* https://tenchat.ru/media/1400080-privet-bezuprechniy-balans-ili-kombinatsiya-peakewma-i-p2c-ot-twitter
