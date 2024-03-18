@@ -1,4 +1,4 @@
-# Highload Ozon
+	# Highload Ozon
 
 ---
 
@@ -129,7 +129,7 @@ erDiagram
     text login UK
     text description
     text imgsrc
-	text phone
+	  text phone
     text passwordhash
   }
 
@@ -139,7 +139,7 @@ erDiagram
     text description
     int price
     text imgsrc
-    numeric(3, 2) rating
+    numeric rating
     uuid category FK
 	int	count_comments
   }
@@ -206,7 +206,6 @@ erDiagram
   }
 ```
 
-
  
 
 | Type          | Byte size |
@@ -215,23 +214,22 @@ erDiagram
 | UUID          | 16        |
 | INT           | 4         |
 | NUMERIC(3, 2) | 8         |
-| TIMESTAMPZ    | 8         |
-| BOOLEAN       | 1         |
-| TEXT          | ~         |
+| timestampz    | 8         |
+| boolean       | 1         |
 
 
-| Table              | Row size [byte] | Number of row | Total |
-| ------------------ | --------------- | ------------- | ----- |
-| PROFILE            |                 |               |       |
-| PRODUCT            |                 |               |       |
-| COMMENT            |                 |               |       |
-| ORDER_INFO         |                 |               |       |
-| STATUS             |                 |               |       |
-| ORDER_ITEM         |                 |               |       |
-| ADDRESS            |                 |               |       |
-| CATEGORY           |                 |               |       |
-| CART               |                 |               |       |
-| SHOPPING_CART_ITEM |                 |               |       |
+| Table              | Row size [byte]                   | Number of row | Total |
+| ------------------ | --------------------------------- | ------------- | ----- |
+| PROFILE            | 16 + 32 + 128 + 64 + 19 +64 = 323 |               |       |
+| PRODUCT            |                                   |               |       |
+| COMMENT            |                                   |               |       |
+| ORDER_INFO         |                                   |               |       |
+| STATUS             |                                   |               |       |
+| ORDER_ITEM         |                                   |               |       |
+| ADDRESS            |                                   |               |       |
+| CATEGORY           |                                   |               |       |
+| CART               |                                   |               |       |
+| SHOPPING_CART_ITEM |                                   |               |       |
 
 
 
