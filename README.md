@@ -108,24 +108,28 @@ Ozon — выход крупнейшего E-commerce России на рыно
 
 ```mermaid
 erDiagram
-  PROFILE ||--o{ ORDER : includes
+  PROFILE ||--o{ ORDER_INFO : includes
   PROFILE ||--o{ ADDRESS : includes
   PROFILE ||--o{ CART : includes
 
-  PROMOCODE ||--o{ ORDER : includes
-  ORDER ||--o{ ORDER_ITEM : includes
+  ORDER_INFO ||--o{ ORDER_ITEM : includes
 
   PRODUCT ||--o{ ORDER_ITEM: includes
   PRODUCT ||--o{ SHOPPING_CART_ITEM : includes
   CATEGORY ||--|{ PRODUCT : includes
-  STATUS ||--|{ ORDER : includes
+  STATUS ||--|{ ORDER_INFO : includes
   CART ||--o{ SHOPPING_CART_ITEM : includes
+
+  COMMENT ||--o{ PROFILE : includes
+  COMMENT ||--o{ PRODUCT : includes
+
 
   PROFILE {
     uuid id PK
     text login UK
     text description
     text imgsrc
+	text phone
     text passwordhash
   }
 
@@ -137,14 +141,24 @@ erDiagram
     text imgsrc
     number rating
     uuid category FK
+	int	count_comments
+  }
+
+  COMMENT {
+    uuid id PK
+    uuid product_id FK
+    uuid profile_id FK
+	text comment
+	int rating
   }
 
 
-  ORDER {
+  ORDER_INFO {
     uuid id PK
     uuid profile_id FK
     uuid promocode_id FK
-    int status FK
+    int status_id FK
+	uuid address_id FK
     timestampz creation_at
     timestampz delivery_at
   }
@@ -156,7 +170,7 @@ erDiagram
 
   ORDER_ITEM {
     uuid id PK
-    uuid order_id FK
+    uuid order_info_id FK
     uuid product_id FK
     int quantity
     int price
