@@ -139,7 +139,7 @@ erDiagram
     text description
     int price
     text imgsrc
-    number rating
+    numeric(3, 2) rating
     uuid category FK
 	int	count_comments
   }
@@ -204,9 +204,36 @@ erDiagram
     uuid product_id FK
     int quantity
   }
-
-
 ```
+
+
+ 
+
+| Type          | Byte size |
+| ------------- | --------- |
+| SERIAL        | 4         |
+| UUID          | 16        |
+| INT           | 4         |
+| NUMERIC(3, 2) | 8         |
+| TIMESTAMPZ    | 8         |
+| BOOLEAN       | 1         |
+| TEXT          | ~         |
+
+
+| Table              | Row size [byte] | Number of row | Total |
+| ------------------ | --------------- | ------------- | ----- |
+| PROFILE            |                 |               |       |
+| PRODUCT            |                 |               |       |
+| COMMENT            |                 |               |       |
+| ORDER_INFO         |                 |               |       |
+| STATUS             |                 |               |       |
+| ORDER_ITEM         |                 |               |       |
+| ADDRESS            |                 |               |       |
+| CATEGORY           |                 |               |       |
+| CART               |                 |               |       |
+| SHOPPING_CART_ITEM |                 |               |       |
+
+
 
 ---
 
