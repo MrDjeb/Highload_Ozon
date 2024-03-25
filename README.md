@@ -240,7 +240,10 @@ erDiagram
 ## 6. Логическая схема БД <a name="6"></a>
 
 Используем СУБД PostgreSQL и патерн Database Per Service.
-Асинхронное межсервисное взаимодействие. Сбор измененных данных с паттерном Outbox на Apache Kafka. 
+#### Преимущества PostgreSQL:
+* Поддержка БД неограниченного размера
+* Мощные и надёжные механизмы транзакций и репликации
+* Легко масштабировать 
 
 ### Потоковая репликация
 
@@ -289,6 +292,21 @@ erDiagram
 Shard Key, к примеру, user_id. Берём остаток от деления по модулю на 1024 от user_id и в зависимости от интервала куда попадает резуьтат 0..127, 128..255, 256..383 и т.д. выбираем физисеский адрес. Следоват решардинг делаем в рамках одного кластера и для этого делим предыдущие интервалы попалам, получаем: 0..63, 64..127, 128..191 и т.д.
 
 ![alt text](images/image-4.png)
+
+В итоге, из опыта Ozon, для таблицы _CART_ чтобы держать 20K RPS можно сделать 32 шарда: 1 синхронная реплика и 2 асинхронных реплики, 100 партиций: cart_0, cart_1, cart_2...
+
+#### Асинхронное межсервисное взаимодействие. Сбор измененных данных с паттерном Outbox на Apache Kafka. 
+
+Этот паттерн решенает проблемыу потери событий.
+![alt text](images/image-6.png)
+__Коньюмер-группа: Cервис отслеживания заказа__
+
+![alt text](images/image-7.png)
+__Внутреннее устройство__
+
+Используем Батчинг + сжатие
+
+
 ---
 
 ## Источники <a name="sources"></a>
@@ -301,3 +319,4 @@ Shard Key, к примеру, user_id. Берём остаток от делен
 * https://super-video-tube.ru/video/7A7Cq9w0G9Y/ozon-tech-community-go-meetup/
 * https://speakerdeck.com/ozontech/dmitrii-loghovskii-kak-zastavit-vashu-bazu-dannykh-dierzhat-20k-rps-varianty-masshtabirovaniia-i-ikh-minusy
 * https://bigdataschool.ru/blog/transactional-outbox-pattern-on-neo4j-and-kafka.html
+* https://speakerdeck.com/ozontech/viktor-korieisha-camyie-rasprostraniennyie-oshibki-pri-rabotie-s-apache-kafka
