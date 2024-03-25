@@ -239,7 +239,7 @@ erDiagram
 
 ## 6. Логическая схема БД <a name="6"></a>
 
-Используем патерн Database Per Service.
+Используем СУБД PostgreSQL и патерн Database Per Service.
 Асинхронное межсервисное взаимодействие. Сбор измененных данных с паттерном Outbox на Apache Kafka. 
 
 ### Потоковая репликация
