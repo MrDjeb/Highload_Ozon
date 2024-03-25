@@ -239,7 +239,10 @@ erDiagram
 
 ## 6. Логическая схема БД <a name="6"></a>
 
-### Потоковая (физическая) репликация
+Используем патерн Database Per Service.
+Асинхронное межсервисное взаимодействие. Сбор измененных данных с паттерном Outbox на Apache Kafka. 
+
+### Потоковая репликация
 
 #### Плюсы
 * Работает из коробки.
@@ -265,8 +268,8 @@ erDiagram
 Патерн работы с данными.
 Пишем в мастер.
 Если супер актуальные данные и нужно минимизировать отставания, то читаем с синхронной реплики. В ином случае с асинхронных.
-Избеем обильного чтения с мастера и по возможности с синхронной реплики.
-Базовое правило — в мастер пишем, читаем только из слейвов.
+Избегаем обильного чтения с мастера и по возможности с синхронной реплики.
+Базовое правило — в мастер пишем, читаем только из слейвов. Сихроная реплица выполняет функцию фейловера, она всегда находиться в другом ДЦ.
 
 ### Партиционирование
 
@@ -297,3 +300,4 @@ Shard Key, к примеру, user_id. Берём остаток от делен
 * https://tenchat.ru/media/1400080-privet-bezuprechniy-balans-ili-kombinatsiya-peakewma-i-p2c-ot-twitter
 * https://super-video-tube.ru/video/7A7Cq9w0G9Y/ozon-tech-community-go-meetup/
 * https://speakerdeck.com/ozontech/dmitrii-loghovskii-kak-zastavit-vashu-bazu-dannykh-dierzhat-20k-rps-varianty-masshtabirovaniia-i-ikh-minusy
+* https://bigdataschool.ru/blog/transactional-outbox-pattern-on-neo4j-and-kafka.html
