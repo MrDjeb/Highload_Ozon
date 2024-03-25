@@ -12,7 +12,9 @@
   
 * ### [4. Локальная балансировка нагрузки](#4)
   
-* ### [5. Логическая схема бд](#5)
+* ### [5. Логическая схема БД](#5)
+
+* ### [6. Физическая схема БД](#5)
   
 * * ### [Источники](#sources)
   
@@ -231,7 +233,27 @@ erDiagram
 | CART               |                                   |               |       |
 | SHOPPING_CART_ITEM |                                   |               |       |
 
+---
 
+## 6. Логическая схема БД <a name="6"></a>
+
+Потоковая (физическая) репликация
+
+Плюсы
+* Работает из коробки.
+* Годами обкатанная технология.
+* Низкое потребление ресурсов, так как никакой логики
+ при репликации нет, изменения выполняются в том же
+порядке, что и на мастере
+* Простота конфигурации, настроил и забыл, простое
+побайтовое копирование через WAL
+
+Минусы
+* Реплицируется весь кластер целиком
+* Реплицируются все операции, включая ошибки
+* Изменения применяются в один поток
+* Работа только в рамках одной мажорной версии
+* Слейвы только read only
 
 ---
 
@@ -242,3 +264,5 @@ erDiagram
 * https://habr.com/ru/companies/ozontech/articles/749328/
 * https://linkerd.io/2016/03/16/beyond-round-robin-load-balancing-for-latency/
 * https://tenchat.ru/media/1400080-privet-bezuprechniy-balans-ili-kombinatsiya-peakewma-i-p2c-ot-twitter
+* https://super-video-tube.ru/video/7A7Cq9w0G9Y/ozon-tech-community-go-meetup/
+* https://speakerdeck.com/ozontech/dmitrii-loghovskii-kak-zastavit-vashu-bazu-dannykh-dierzhat-20k-rps-varianty-masshtabirovaniia-i-ikh-minusy
