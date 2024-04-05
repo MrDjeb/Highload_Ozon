@@ -3,31 +3,34 @@
 
 
 ---
+<details>
 
-## Содержание
+<summary>Содержание</summary>
 
-* ### [1. Тема, целевая аудитория](#1)
+#### 1. [Тема, целевая аудитория](#1)
 
-* ### [2. Расчет нагрузки](#2)
+#### 2. [Расчет нагрузки](#2)
 
-* ### [3. Глобальная балансировка нагрузки](#3)
+#### 3. [Глобальная балансировка нагрузки](#3)
   
-* ### [4. Локальная балансировка нагрузки](#4)
+#### 4. [Локальная балансировка нагрузки](#4)
   
-* ### [5. Логическая схема БД](#5)
+#### 5. [Логическая схема БД](#5)
 
-* ### [6. Физическая схема БД](#6)
+#### 6. [Физическая схема БД](#6)
   
-* * ### [Источники](#sources)
-  
+* * #### [Источники](#sources)
+
+</details>
+
 ---
 
-## 1. Тема, аудитория, функционал
+<h2 id="1">1. Тема, аудитория, функционал </h2>
 
 ### Тема
 
 Ozon — выход крупнейшего E-commerce России на рынок КНР.  
-### Целевая аудитория  \[[1]( https://ozon.tech/)]
+### Целевая аудитория  [[1](#sources)]
 - Рынок КНР.
 - Возрастная категория: 18-45 лет; 40% женщин, 60% мужчин.
 - Уникальных пользователей:
@@ -48,8 +51,11 @@ Ozon — выход крупнейшего E-commerce России на рыно
 	- Обновление данных о статусе от транспортных компаний.
 ---
 
-## 2. Расчет нагрузки <a name="2"></a>
-### Сценарий посещения сайта одним пользователем в течение дня
+<h2 id="2">2. Расчет нагрузки</h2>
+
+### Продуктовые метрики
+
+#### Сценарий посещения сайта одним пользователем в течение дня
 
 | Действие | Кол-во | В среднем |
 | ---- | ---- | ---- |
@@ -306,17 +312,18 @@ __Внутреннее устройство__
 
 Используем Батчинг + сжатие
 
+#### Сетевая файловая система (CEPH)
 
 ---
 
 ## Источники <a name="sources"></a>
-* https://ozon.tech/
-* https://habr.com/ru/companies/ozontech/articles/667600/
-* https://www.youtube.com/watch?v=kIZ_4PNvkro
-* https://habr.com/ru/companies/ozontech/articles/749328/
-* https://linkerd.io/2016/03/16/beyond-round-robin-load-balancing-for-latency/
-* https://tenchat.ru/media/1400080-privet-bezuprechniy-balans-ili-kombinatsiya-peakewma-i-p2c-ot-twitter
-* https://super-video-tube.ru/video/7A7Cq9w0G9Y/ozon-tech-community-go-meetup/
-* https://speakerdeck.com/ozontech/dmitrii-loghovskii-kak-zastavit-vashu-bazu-dannykh-dierzhat-20k-rps-varianty-masshtabirovaniia-i-ikh-minusy
-* https://bigdataschool.ru/blog/transactional-outbox-pattern-on-neo4j-and-kafka.html
-* https://speakerdeck.com/ozontech/viktor-korieisha-camyie-rasprostraniennyie-oshibki-pri-rabotie-s-apache-kafka
+1. https://ozon.tech/
+2. https://habr.com/ru/companies/ozontech/articles/667600/
+3. https://www.youtube.com/watch?v=kIZ_4PNvkro
+4. https://habr.com/ru/companies/ozontech/articles/749328/
+5. https://linkerd.io/2016/03/16/beyond-round-robin-load-balancing-for-latency/
+6. https://tenchat.ru/media/1400080-privet-bezuprechniy-balans-ili-kombinatsiya-peakewma-i-p2c-ot-twitter
+7. https://super-video-tube.ru/video/7A7Cq9w0G9Y/ozon-tech-community-go-meetup/
+8. https://speakerdeck.com/ozontech/dmitrii-loghovskii-kak-zastavit-vashu-bazu-dannykh-dierzhat-20k-rps-varianty-masshtabirovaniia-i-ikh-minusy
+9. https://bigdataschool.ru/blog/transactional-outbox-pattern-on-neo4j-and-kafka.html
+10. https://speakerdeck.com/ozontech/viktor-korieisha-camyie-rasprostraniennyie-oshibki-pri-rabotie-s-apache-kafka
