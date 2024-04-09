@@ -310,9 +310,9 @@ erDiagram
 
 ---
 
-<details>
-<summary>6. Логическая схема БД</summary>
-<h2 id="6">6. Логическая схема БД</h2>
+<details id="6">
+<summary id="7">6. Логическая схема БД</summary>
+<h2>6. Логическая схема БД</h2>
 
 Используем СУБД PostgreSQL и патерн Database Per Service.
 #### Преимущества PostgreSQL:
@@ -389,7 +389,7 @@ __Внутреннее устройство__
 
 <details>
 <summary>7. Технологии</summary>
-<h2 id="7">7. Технологии</h2>
+<h2 id="8">7. Технологии</h2>
 
 </details>
 
