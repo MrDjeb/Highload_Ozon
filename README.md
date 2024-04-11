@@ -133,7 +133,7 @@ __rFBS__ (_real FBS_) — схема работы, при которой про�
 ---
 ![alt text](./images/datagram-1.svg)
 
-<img src="./images/datagram-1.svg">
+<img src="./data.svg">
 
 ### Технические метрики от Ozon
 
