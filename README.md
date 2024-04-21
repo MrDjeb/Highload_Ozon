@@ -76,9 +76,7 @@ __rFBS__ (_real FBS_) — схема работы, при которой про�
 
 Схема __FBS__ от Ozon  [[11](#sources)]
 
-
-![Схема FBS от Ozon](/images/image-8.png)
-
+![Схема FBS от Ozon](https://raw.githubusercontent.com/MrDjeb/Highload_Ozon/main/images/image-8.png)
 
 </details>
 
@@ -137,9 +135,7 @@ __rFBS__ (_real FBS_) — схема работы, при которой про�
 * **SKU** *[млн.]* — ассортимент единиц товара на площадке.
 
 
-
-![Рост кол-ва заказов Ozon](/images/image-10.png)
-
+![Рост кол-ва заказов Ozon](https://raw.githubusercontent.com/MrDjeb/Highload_Ozon/main/images/datagram-1.svg)
 
 ---
 ### Технические метрики от Ozon
