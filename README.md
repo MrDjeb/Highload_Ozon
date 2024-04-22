@@ -494,6 +494,11 @@ __Внутреннее устройство__
 
 <h2 id="8">8. Схема проекта</h2>
 
+[Схема проекта на icepanel](https://s.icepanel.io/4CQ6UE87YvPjL5/WNMj)
+
+
+
+![https://s.icepanel.io/4CQ6UE87YvPjL5/WNMj](images/image-11.png)
 
 ---
 
