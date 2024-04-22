@@ -502,7 +502,7 @@ __Внутреннее устройство__
 
 
 
-![https://s.icepanel.io/4CQ6UE87YvPjL5/WNMj](images/image-11.png)
+![https://s.icepanel.io/4CQ6UE87YvPjL5/WNMj](images/image-12.png)
 
 ---
 
