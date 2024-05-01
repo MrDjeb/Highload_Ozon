@@ -252,21 +252,25 @@ YoY в 2022г для ассортимента SKU равняется +107%  $\Ri
 
 <h2 id="3">3. Глобальная балансировка нагрузки</h2>
 
-Плотность населения КНР
-![alt text](images/image-1.png)
+Плотность населения и карта магистральных сетей Китая. [[31](#sources)] [[32](#sources)] 
+![alt text](images/image-15.png)
+![alt text](images/image-14.png)
 
-Схема глобальной балансировки
+
+В на территории КНР действует три Tier-1 оператора:
+*China Telecom*, *China Mobile*, *China Unicom*.
 
 Чтобы убедиться, что схема расположения ДЦ выбрана правильно, оценим RTT из краевых точек до выбранных городов:
 
 Поскольку значение RTT находится в допустимых пределах(100 мс), утверждаем выбранный список городов.
+
+Схема глобальной балансировки
 
 DNS балансировка - равномерное распределение нагрузки между ДЦ
 
 Anycast балансировка - маршрутизация трафика клиента в ДЦ с меньшим весом в BGP таблице
 
 https://looking.house/
-https://www.luminocity3d.org/WorldPopDen/
 
 ```topojson
 {
@@ -294,6 +298,62 @@ https://www.luminocity3d.org/WorldPopDen/
         "type": "Point"
       },
       "id": 1
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          113.25935182000518,
+          23.130321873002856
+        ],
+        "type": "Point"
+      },
+      "id": 2
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          106.63845452540488,
+          29.719267724613957
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          114.29987232787994,
+          30.59521602262106
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          123.43038134685406,
+          41.80836081717058
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          102.70905276483944,
+          25.04093117400457
+        ],
+        "type": "Point"
+      }
     }
   ]
 }
@@ -609,3 +669,5 @@ External monitoring,
 28. https://vc.ru/marketing/603057-tendencii-v-otzyvah-klientov-2023
 29. [Опрос Market Papa](https://traff.ink/marketpleysy/povedenie-pokypatlei-na-marketplacah/)
 30. https://speakerdeck.com/ozontech/dienis-dubovitskii-kak-razdavat-bolshiie-faily-biez-butylochnykh-ghorlyshiek?slide=5
+31. https://luminocity3d.org/WorldCity/
+32. https://media.chinatelecomeurope.com/view/1056582712/
