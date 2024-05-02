@@ -424,7 +424,7 @@ YoY в 2022г для ассортимента SKU равняется +107%  $\Ri
 ![alt text](images/image-15.png)
 ![alt text](images/image-14.png)
 
-![alt text](images/image-17.jpg)
+![alt text](images/image-17.png)
 
 ---
 
