@@ -572,67 +572,68 @@ erDiagram
 
 **PROFILE**
 ```TeX
- 16+32+128+64+19+64=323
+  id(16) + login(32) + description(128) + imgsrc(64) + phone(19) + passwordHash(64) = 323
 ``` 
 ---
 **PRODUCT**
 ```TeX
-
+  id(16) + name(128) + description(1024) + price(4) + imgsrc(64) + rating(8) + category(16) + count_comments(4) = 1264
 ``` 
 ---
 **COMMENT**
 ```TeX
-
+  id(16) + product_id(16) + profile_id(16) + comment(256) + rating(4) = 308
+  id(16) + product_id(16) + profile_id(16) + comment(0) + rating(4) = 52
 ``` 
 ---
 **ORDER_INFO**
 ```TeX
-
+  id(16) + profile_id(16) + promocode_id(16) + status_id(4) + address_id(16) + creation_at(8) + delivery_at(8) = 84
 ``` 
 ---
 **STATUS**
 ```TeX
-
+  id(4) + name(8) = 12
 ``` 
 ---
 **ORDER_ITEM**
 ```TeX
-
+  id(16) + order_info_id(16) + product_id(16) + quantity(4) + price(4) = 56
 ``` 
 ---
 **ADDRESS**
 ```TeX
-
+  id(16) + profile_id(16) + city(16) + street(16) + house(8) + flat(8) + is_current(1) = 81
 ``` 
 ---
 **CATEGORY**
 ```TeX
-
+  id(4) + name(16) + parent(4) = 24
 ``` 
 ---
 **CART**
 ```TeX
-
+  id(16) + profile_id(16) + is_current(1) = 33
 ``` 
 ---
 **SHOPPING_CART_ITEM**
 ```TeX
-
+  id(16) + cart_id(16) + product_id(16) + quantity(4) = 52
 ``` 
 ---
 
-| Table                  | Row size [byte]            | Number of row | Total |
-| ---------------------- | -------------------------- | ------------- | ----- |
-| **PROFILE**            | $`16+32+128+64+19+64=323`$ |               |       |
-| **PRODUCT**            | 16+128+128+64+19 |               |       |
-| **COMMENT**            |                            |               |       |
-| **ORDER_INFO**         |                            |               |       |
-| **STATUS**             |                            |               |       |
-| **ORDER_ITEM**         |                            |               |       |
-| **ADDRESS**            |                            |               |       |
-| **CATEGORY**           |                            |               |       |
-| **CART**               |                            |               |       |
-| **SHOPPING_CART_ITEM** |                            |               |       |
+| Table                  | Row size [byte] | Number of row             | Total |
+| ---------------------- | --------------- | ------------------------- | ----- |
+| **PROFILE**            | 323             | $`30\cdot 10^6`$          |       |
+| **PRODUCT**            | 1264            | $`82\cdot 10^6`$          |       |
+| **COMMENT**            | 308; 52         | $`128.5\cdot 10^6; 53.5`$ |       |
+| **ORDER_INFO**         | 84              |                           |       |
+| **STATUS**             | 12              |                           |       |
+| **ORDER_ITEM**         | 56              |                           |       |
+| **ADDRESS**            | 81              |                           |       |
+| **CATEGORY**           | 24              |                           |       |
+| **CART**               | 33              |                           |       |
+| **SHOPPING_CART_ITEM** | 52              |                           |       |
 
 
 ---
